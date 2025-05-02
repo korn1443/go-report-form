@@ -1,0 +1,498 @@
+.logo img {
+            max-height: 100px;
+            max-width: 100%;
+        }
+        .garuda img {
+            height: 100px;
+            max-width: 100%;
+        }
+        /* Base64 encoded images for fallback */
+        .garuda-fallback {
+            text-align: center;
+            margin-bottom: 15px;
+            height: 100px;
+            background-image: url('data:image/png;base64,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');
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .logo-fallback {
+            text-align: center;
+            margin-bottom: 20px;
+            height: 100px;
+            background-image: url('data:image/jpeg;base64,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<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบฟอร์มรายงานการไปราชการ</title>
+    <style>
+        body {
+            font-family: 'TH Sarabun New', 'Sarabun', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #0056b3;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-height: 100px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 16px;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        button {
+            background: #0056b3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #003d82;
+        }
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .table-expenses {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        .table-expenses th, .table-expenses td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .table-expenses th {
+            background-color: #f2f2f2;
+        }
+        .expense-row td {
+            padding: 5px;
+        }
+        .add-row {
+            background: #28a745;
+        }
+        .add-row:hover {
+            background: #218838;
+        }
+        .print-area {
+            background: white;
+            padding: 20px;
+            margin-top: 30px;
+            border: 1px solid #ddd;
+            display: none;
+        }
+        .header-print {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .official-form {
+            border: 1px solid #000;
+            padding: 20px;
+            position: relative;
+        }
+        .garuda {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .garuda img {
+            height: 100px;
+        }
+        .form-header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .form-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-top: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .signature {
+            margin-top: 50px;
+            text-align: right;
+            padding-right: 100px;
+        }
+        @media print {
+            .container:not(.print-area) {
+                display: none;
+            }
+            .print-area {
+                display: block !important;
+                border: none;
+            }
+            button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://img2.pic.in.th/pic/RJ-6.jpg" alt="โลโก้หน่วยงาน">
+        </div>
+        <h1>แบบฟอร์มรายงานการไปราชการ</h1>
+        
+        <div class="form-group">
+            <label for="officer">ชื่อ-นามสกุล:</label>
+            <input type="text" id="officer" placeholder="กรุณาระบุชื่อ-นามสกุล">
+        </div>
+        
+        <div class="form-group">
+            <label for="position">ตำแหน่ง:</label>
+            <input type="text" id="position" placeholder="กรุณาระบุตำแหน่ง">
+        </div>
+        
+        <div class="form-group">
+            <label for="department">สังกัด:</label>
+            <input type="text" id="department" placeholder="กรุณาระบุสังกัด">
+        </div>
+        
+        <div class="form-group">
+            <label for="docno">เลขที่คำสั่ง/หนังสือ:</label>
+            <input type="text" id="docno" placeholder="กรุณาระบุเลขที่คำสั่ง/หนังสือ">
+        </div>
+        
+        <div class="form-group">
+            <label for="date">ลงวันที่:</label>
+            <input type="date" id="date">
+        </div>
+        
+        <div class="form-group">
+            <label for="purpose">วัตถุประสงค์การไปราชการ:</label>
+            <textarea id="purpose" placeholder="กรุณาระบุวัตถุประสงค์การไปราชการ"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="location">สถานที่:</label>
+            <input type="text" id="location" placeholder="กรุณาระบุสถานที่">
+        </div>
+        
+        <div class="form-group">
+            <label for="start-date">วันที่เริ่มต้น:</label>
+            <input type="date" id="start-date">
+        </div>
+        
+        <div class="form-group">
+            <label for="end-date">วันที่สิ้นสุด:</label>
+            <input type="date" id="end-date">
+        </div>
+        
+        <div class="form-group">
+            <label>ค่าใช้จ่าย:</label>
+            <table class="table-expenses" id="expense-table">
+                <thead>
+                    <tr>
+                        <th>รายการ</th>
+                        <th>จำนวนเงิน (บาท)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="expense-row">
+                        <td><input type="text" placeholder="ระบุรายการ"></td>
+                        <td><input type="number" placeholder="0.00" step="0.01"></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">
+                            <button type="button" class="add-row" onclick="addExpenseRow()">+ เพิ่มรายการ</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-right"><strong>รวมทั้งสิ้น:</strong></td>
+                        <td id="total-expense">0.00 บาท</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        
+        <div class="form-group">
+            <label for="summary">สรุปผลการไปราชการ:</label>
+            <textarea id="summary" placeholder="กรุณาสรุปผลการไปราชการ"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="report-date">วันที่รายงาน:</label>
+            <input type="date" id="report-date">
+        </div>
+        
+        <div class="buttons">
+            <button type="button" onclick="generateReport()">สร้างรายงาน</button>
+            <button type="button" onclick="printReport()">พิมพ์รายงาน</button>
+            <button type="button" onclick="resetForm()">ล้างข้อมูล</button>
+        </div>
+        
+        <!-- พื้นที่สำหรับพิมพ์ -->
+        <div class="print-area" id="print-area">
+            <!-- เนื้อหาจะถูกเพิ่มด้วย JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // เพิ่มแถวรายการค่าใช้จ่าย
+        function addExpenseRow() {
+            const tableBody = document.querySelector('#expense-table tbody');
+            const newRow = document.createElement('tr');
+            newRow.className = 'expense-row';
+            newRow.innerHTML = `
+                <td><input type="text" placeholder="ระบุรายการ"></td>
+                <td><input type="number" placeholder="0.00" step="0.01"></td>
+            `;
+            tableBody.appendChild(newRow);
+            
+            // เพิ่ม event listener สำหรับการคำนวณยอดรวม
+            const inputFields = newRow.querySelectorAll('input[type="number"]');
+            inputFields.forEach(input => {
+                input.addEventListener('input', calculateTotal);
+            });
+        }
+        
+        // คำนวณยอดรวมค่าใช้จ่าย
+        function calculateTotal() {
+            const expenseInputs = document.querySelectorAll('#expense-table tbody input[type="number"]');
+            let total = 0;
+            
+            expenseInputs.forEach(input => {
+                total += parseFloat(input.value) || 0;
+            });
+            
+            document.getElementById('total-expense').textContent = total.toFixed(2) + ' บาท';
+        }
+        
+        // เพิ่ม event listener เริ่มต้น
+        document.addEventListener('DOMContentLoaded', function() {
+            const initialExpenseInputs = document.querySelectorAll('#expense-table tbody input[type="number"]');
+            initialExpenseInputs.forEach(input => {
+                input.addEventListener('input', calculateTotal);
+            });
+            
+            // ตั้งค่าวันที่ปัจจุบัน
+            const today = new Date();
+            const formattedDate = today.toISOString().split('T')[0];
+            document.getElementById('report-date').value = formattedDate;
+        });
+        
+        // สร้างรายงาน
+        function generateReport() {
+            const officer = document.getElementById('officer').value;
+            const position = document.getElementById('position').value;
+            const department = document.getElementById('department').value;
+            const docno = document.getElementById('docno').value;
+            const date = document.getElementById('date').value;
+            const purpose = document.getElementById('purpose').value;
+            const location = document.getElementById('location').value;
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+            const summary = document.getElementById('summary').value;
+            const reportDate = document.getElementById('report-date').value;
+            
+            // ตรวจสอบข้อมูลที่จำเป็น
+            if (!officer || !position || !department || !docno || !date || !purpose || !location || !startDate || !endDate || !summary || !reportDate) {
+                alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+                return;
+            }
+            
+            // สร้างตารางค่าใช้จ่าย
+            let expensesHtml = '';
+            let total = 0;
+            const expenseRows = document.querySelectorAll('#expense-table tbody tr');
+            
+            expenseRows.forEach(row => {
+                const itemName = row.querySelector('input[type="text"]').value;
+                const itemAmount = parseFloat(row.querySelector('input[type="number"]').value) || 0;
+                
+                if (itemName) {
+                    expensesHtml += `
+                        <tr>
+                            <td>${itemName}</td>
+                            <td class="text-right">${itemAmount.toFixed(2)} บาท</td>
+                        </tr>
+                    `;
+                    total += itemAmount;
+                }
+            });
+            
+            // แปลงรูปแบบวันที่
+            const formatDate = (dateStr) => {
+                if (!dateStr) return '';
+                const date = new Date(dateStr);
+                return date.toLocaleDateString('th-TH', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            };
+            
+            // สร้าง HTML สำหรับพิมพ์
+            const printArea = document.getElementById('print-area');
+            printArea.innerHTML = `
+                <div class="official-form">
+                    <div class="garuda">
+                        <img src="https://img5.pic.in.th/file/secure-sv1/1ed6e64eb2cb6c9c150ef4183854535f.png" alt="ตราครุฑ">
+                    </div>
+                    
+                    <div class="form-header">
+                        บันทึกข้อความ
+                    </div>
+                    
+                    <div class="form-details">
+                        <div><strong>ส่วนราชการ</strong> ${department}</div>
+                        <div><strong>วันที่</strong> ${formatDate(reportDate)}</div>
+                    </div>
+                    
+                    <div class="section-title">
+                        <strong>เรื่อง</strong> รายงานผลการไปราชการ
+                    </div>
+                    
+                    <div class="section-title">
+                        <strong>เรียน</strong> ผู้อำนวยการโรงเรียนร่วมจิตต์วิทยา
+                    </div>
+                    
+                    <p>ตามคำสั่ง/หนังสือ เลขที่ ${docno} ลงวันที่ ${formatDate(date)} ได้อนุมัติให้ข้าพเจ้า ${officer} ตำแหน่ง ${position} 
+                    สังกัด ${department} ไปราชการเพื่อ ${purpose} ณ ${location} ตั้งแต่วันที่ ${formatDate(startDate)} ถึงวันที่ ${formatDate(endDate)} นั้น</p>
+                    
+                    <p>บัดนี้ การไปราชการได้เสร็จสิ้นแล้ว ข้าพเจ้าขอรายงานผลการไปราชการ ดังนี้</p>
+                    
+                    <p>${summary}</p>
+                    
+                    <h3>ค่าใช้จ่ายในการไปราชการ</h3>
+                    <table class="table-expenses">
+                        <thead>
+                            <tr>
+                                <th>รายการ</th>
+                                <th>จำนวนเงิน (บาท)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${expensesHtml}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td class="text-right"><strong>รวมทั้งสิ้น</strong></td>
+                                <td class="text-right"><strong>${total.toFixed(2)} บาท</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    
+                    <div class="signature">
+                        <p>ลงชื่อ ................................................</p>
+                        <p>(${officer})</p>
+                        <p>ตำแหน่ง ${position}</p>
+                        <p>วันที่ ${formatDate(reportDate)}</p>
+                    </div>
+                    
+                    <div style="margin-top: 50px; border-top: 1px dashed #999; padding-top: 15px;">
+                        <p><strong>ความเห็นของผู้บริหาร</strong></p>
+                        <p>...............................................................</p>
+                        <p>...............................................................</p>
+ 
+                        
+                        <div class="signature">
+                            <p>ลงชื่อ ................................................</p>
+                            <p>(นายนิกรณ์ ปักกาสาร)</p>
+                            <p>ผู้อำนวยการโรงเรียนร่วมจิตต์วิทยา</p>
+                            <p>วันที่........เดือน.....................พ.ศ................</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            printArea.style.display = 'block';
+        }
+        
+        // พิมพ์รายงาน
+        function printReport() {
+            if (document.getElementById('print-area').innerHTML.trim() === '') {
+                alert('กรุณาสร้างรายงานก่อนพิมพ์');
+                return;
+            }
+            window.print();
+        }
+        
+        // ล้างข้อมูลทั้งหมด
+        function resetForm() {
+            document.querySelectorAll('input, textarea').forEach(input => {
+                input.value = '';
+            });
+            
+            // ล้างตารางค่าใช้จ่าย แต่เหลือแถวเริ่มต้นไว้ 1 แถว
+            const tableBody = document.querySelector('#expense-table tbody');
+            tableBody.innerHTML = `
+                <tr class="expense-row">
+                    <td><input type="text" placeholder="ระบุรายการ"></td>
+                    <td><input type="number" placeholder="0.00" step="0.01"></td>
+                </tr>
+            `;
+            
+            // เพิ่ม event listener อีกครั้ง
+            const initialExpenseInputs = document.querySelectorAll('#expense-table tbody input[type="number"]');
+            initialExpenseInputs.forEach(input => {
+                input.addEventListener('input', calculateTotal);
+            });
+            
+            // รีเซ็ตยอดรวม
+            document.getElementById('total-expense').textContent = '0.00 บาท';
+            
+            // ซ่อนพื้นที่พิมพ์
+            document.getElementById('print-area').style.display = 'none';
+            
+            // ตั้งค่าวันที่ปัจจุบันอีกครั้ง
+            const today = new Date();
+            const formattedDate = today.toISOString().split('T')[0];
+            document.getElementById('report-date').value = formattedDate;
+        }
+    </script>
+</body>
+</html>
