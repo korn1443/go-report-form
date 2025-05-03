@@ -9,27 +9,31 @@
             font-family: 'TH Sarabun New', 'Sarabun', sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             color: #333;
+            background-color: #f5f5f5;
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
             background: #fff;
-            padding: 20px;
+            padding: 15px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
         }
         h1 {
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: #0056b3;
+            font-size: 24px;
         }
         .logo {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .logo img {
-            max-height: 100px;
+            max-height: 80px;
+            max-width: 100%;
         }
         .form-group {
             margin-bottom: 15px;
@@ -48,6 +52,17 @@
             font-family: inherit;
             font-size: 16px;
         }
+        
+        select {
+            background-color: white;
+            appearance: auto;
+            cursor: pointer;
+        }
+        
+        select:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
         textarea {
             height: 100px;
             resize: vertical;
@@ -56,11 +71,12 @@
             background: #0056b3;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 10px 15px;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-            margin-right: 10px;
+            margin: 5px;
+            transition: background 0.3s;
         }
         button:hover {
             background: #003d82;
@@ -68,6 +84,9 @@
         .buttons {
             text-align: center;
             margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .table-expenses {
             width: 100%;
@@ -93,18 +112,18 @@
         }
         .print-area {
             background: white;
-            padding: 20px;
+            padding: 15px;
             margin-top: 30px;
             border: 1px solid #ddd;
             display: none;
+            border-radius: 8px;
         }
         .header-print {
             text-align: center;
             margin-bottom: 20px;
         }
         .official-form {
-            border: 1px solid #000;
-            padding: 20px;
+            padding: 15px;
             position: relative;
         }
         .garuda {
@@ -112,17 +131,16 @@
             margin-bottom: 15px;
         }
         .garuda img {
-            height: 100px;
+            height: 80px;
+            max-width: 100%;
         }
         .form-header {
             text-align: center;
             font-weight: bold;
             font-size: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .form-details {
-            display: flex;
-            justify-content: space-between;
             margin-bottom: 15px;
         }
         .section-title {
@@ -138,10 +156,80 @@
             text-align: right;
         }
         .signature {
-            margin-top: 50px;
+            margin-top: 30px;
             text-align: right;
-            padding-right: 100px;
+            padding-right: 10%;
         }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            button {
+                width: 100%;
+                margin: 5px 0;
+            }
+            .form-details {
+                flex-direction: column;
+            }
+            .signature {
+                padding-right: 5%;
+            }
+            .official-form {
+                padding: 10px;
+            }
+        }
+        
+        /* เพิ่มเติมสำหรับรายงาน */
+        .report-content {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .report-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .left-image {
+            display: block;
+            margin: 0 auto 15px auto;
+            max-width: 100px;
+        }
+        .detail-item {
+            margin-bottom: 8px;
+        }
+        .detail-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .detail-label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .indent-paragraph {
+            text-indent: 2em;
+            margin: 10px 0;
+        }
+        .expense-table-container {
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        .approval-section {
+            margin-top: 30px;
+            border-top: 1px dashed #999;
+            padding-top: 15px;
+        }
+        
         @media print {
             .container:not(.print-area) {
                 display: none;
@@ -152,6 +240,13 @@
             }
             button {
                 display: none;
+            }
+            body {
+                padding: 0;
+                background: white;
+            }
+            .expense-table-container {
+                overflow-x: visible;
             }
         }
     </style>
@@ -170,7 +265,19 @@
         
         <div class="form-group">
             <label for="position">ตำแหน่ง:</label>
-            <input type="text" id="position" placeholder="กรุณาระบุตำแหน่ง">
+            <select id="position">
+                <option value="" disabled selected>กรุณาเลือกตำแหน่ง</option>
+                <option value="ผู้อำนวยการ">ผู้อำนวยการ</option>
+                <option value="รองผู้อำนวยการ">รองผู้อำนวยการ</option>
+                <option value="ครูชำนาญการพิเศษ">ครูชำนาญการพิเศษ</option>
+                <option value="ครูชำนาญการ">ครูชำนาญการ</option>
+                <option value="ครู">ครู</option>
+                <option value="ครูผู้ช่วย">ครูผู้ช่วย</option>
+                <option value="พนักงานราชการ">พนักงานราชการ</option>
+                <option value="ครูอัตราจ้าง">ครูอัตราจ้าง</option>
+                <option value="ครูธุรการ">ครูธุรการ</option>
+                <option value="นักการภารโรง">นักการภารโรง</option>
+            </select>
         </div>
         
         <div class="form-group">
@@ -210,31 +317,33 @@
         
         <div class="form-group">
             <label>ค่าใช้จ่าย:</label>
-            <table class="table-expenses" id="expense-table">
-                <thead>
-                    <tr>
-                        <th>รายการ</th>
-                        <th>จำนวนเงิน (บาท)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="expense-row">
-                        <td><input type="text" placeholder="ระบุรายการ"></td>
-                        <td><input type="number" placeholder="0.00" step="0.01"></td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="2">
-                            <button type="button" class="add-row" onclick="addExpenseRow()">+ เพิ่มรายการ</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right"><strong>รวมทั้งสิ้น:</strong></td>
-                        <td id="total-expense">0.00 บาท</td>
-                    </tr>
-                </tfoot>
-            </table>
+            <div class="expense-table-container">
+                <table class="table-expenses" id="expense-table">
+                    <thead>
+                        <tr>
+                            <th>รายการ</th>
+                            <th>จำนวนเงิน (บาท)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="expense-row">
+                            <td><input type="text" placeholder="ระบุรายการ"></td>
+                            <td><input type="number" placeholder="0.00" step="0.01"></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">
+                                <button type="button" class="add-row" onclick="addExpenseRow()">+ เพิ่มรายการ</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>รวมทั้งสิ้น:</strong></td>
+                            <td id="total-expense">0.00 บาท</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
         </div>
         
         <div class="form-group">
@@ -357,54 +466,60 @@
             // สร้าง HTML สำหรับพิมพ์
             const printArea = document.getElementById('print-area');
             printArea.innerHTML = `
-                <div class="official-form">
-                    
-                    <div class="form-header">
-                        บันทึกข้อความ
-                    </div>
-                     
-                    <div>
-                        <img src="https://img5.pic.in.th/file/secure-sv1/1ed6e64eb2cb6c9c150ef4183854535f.png" style="width: 113px; height: auto;" alt="ตราครุฑ" class="left-image"> 
+                <div class="official-form report-content" style="border: none;">
+                    <div style="position: relative; padding-bottom: 30px;">
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <span style="font-size: 20px; font-weight: bold;">บันทึกข้อความ</span>
+                        </div>
+                        
+                        <div style="position: absolute; top: 0; left: 30px;">
+                            <img src="https://img5.pic.in.th/file/secure-sv1/1ed6e64eb2cb6c9c150ef4183854535f.png" style="width: 60px; height: auto;" alt="ตราครุฑ">
+                        </div>
                     </div>
                     
                     <div class="form-details">
-                        <div><strong>ส่วนราชการ</strong> โรงเรียนร่วมจิตต์วิทยา อำเภอละหานทราย จังหวัดบุรีรัมย์</div>
-                        <div><strong>วันที่</strong> ${formatDate(reportDate)}</div>
+                        <div class="detail-row">
+                            <div class="detail-item"><span class="detail-label">ส่วนราชการ</span> โรงเรียนร่วมจิตต์วิทยา อำเภอละหานทราย จังหวัดบุรีรัมย์</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-item"><span class="detail-label">ที่.....................</span> วันที่ ${formatDate(reportDate)}</div>
+                        </div>
                     </div>
                     
                     <div class="section-title">
-                        <strong>เรื่อง</strong> รายงานผลการไปราชการ
+                        <span class="detail-label">เรื่อง</span> รายงานผลการไปราชการ
                     </div>
                     
                     <div class="section-title">
-                        <strong>เรียน</strong> ผู้อำนวยการโรงเรียนร่วมจิตต์วิทยา
+                        <span class="detail-label">เรียน</span> ผู้อำนวยการโรงเรียนร่วมจิตต์วิทยา
                     </div>
                     
-                    <p>ตามคำสั่ง/หนังสือ เลขที่ ${docno} ลงวันที่ ${formatDate(date)} ได้อนุมัติให้ข้าพเจ้า ${officer} ตำแหน่ง ${position} สังกัด ${department} ไปราชการเพื่อ ${purpose} ณ ${location} ตั้งแต่วันที่ ${formatDate(startDate)} ถึงวันที่ ${formatDate(endDate)} นั้น</p>
-                    <p style="text-indent: 2em;"></p>
+                    <p class="indent-paragraph">ตามคำสั่ง/หนังสือ เลขที่ ${docno} ลงวันที่ ${formatDate(date)} ได้อนุมัติให้ข้าพเจ้า ${officer} ตำแหน่ง ${position} สังกัด ${department} ไปราชการเพื่อ ${purpose} ณ ${location} ตั้งแต่วันที่ ${formatDate(startDate)} ถึงวันที่ ${formatDate(endDate)} นั้น</p>
                     
-                    <p style="text-indent: 2em;">บัดนี้ การไปราชการได้เสร็จสิ้นแล้ว ข้าพเจ้าขอรายงานผลการไปราชการ ดังนี้</p>
+                    <p class="indent-paragraph">บัดนี้ การไปราชการได้เสร็จสิ้นแล้ว ข้าพเจ้าขอรายงานผลการไปราชการ ดังนี้</p>
                     
-                              <p>${summary}</p>
+                    <div class="indent-paragraph">${summary.replace(/\n/g, '<br>')}</div>
                     
                     <h3>ค่าใช้จ่ายในการไปราชการ</h3>
-                    <table class="table-expenses">
-                        <thead>
-                            <tr>
-                                <th>รายการ</th>
-                                <th>จำนวนเงิน (บาท)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${expensesHtml}
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td class="text-right"><strong>รวมทั้งสิ้น</strong></td>
-                                <td class="text-right"><strong>${total.toFixed(2)} บาท</strong></td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                    <div class="expense-table-container">
+                        <table class="table-expenses">
+                            <thead>
+                                <tr>
+                                    <th>รายการ</th>
+                                    <th>จำนวนเงิน (บาท)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${expensesHtml}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td class="text-right"><strong>รวมทั้งสิ้น</strong></td>
+                                    <td class="text-right"><strong>${total.toFixed(2)} บาท</strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                     
                     <div class="signature">
                         <p>ลงชื่อ ................................................</p>
@@ -413,14 +528,14 @@
                         <p>วันที่ ${formatDate(reportDate)}</p>
                     </div>
                     
-                    <div style="margin-top: 50px; border-top: 1px dashed #999; padding-top: 15px;">
+                    <div class="approval-section">
                         <p><strong>ความเห็นของผู้บริหาร</strong></p>
                         <p>................................................................</p>
                         <p>................................................................</p>
                         <p>................................................................</p>
                         
                         <div class="signature">
-                            <p>ลงชื่อ ........................</p>
+                            <p>ลงชื่อ ................................................</p>
                             <p>(นายนิกรณ์ ปักกาสาร)</p>
                             <p>ผู้อำนวยการโรงเรียนร่วมจิตต์วิทยา</p>
                             <p>วันที่.....เดือน...........พ.ศ........</p>
@@ -430,6 +545,9 @@
             `;
             
             printArea.style.display = 'block';
+            
+            // เลื่อนไปที่รายงาน
+            printArea.scrollIntoView({ behavior: 'smooth' });
         }
         
         // พิมพ์รายงาน
@@ -438,7 +556,22 @@
                 alert('กรุณาสร้างรายงานก่อนพิมพ์');
                 return;
             }
+            
+            // ตั้งค่าสำหรับการพิมพ์เป็น PDF
+            const printArea = document.getElementById('print-area');
+            const originalDisplay = printArea.style.display;
+            
+            // แสดงส่วนที่จะพิมพ์
+            printArea.style.display = 'block';
+            
+            // สร้างคำแนะนำสำหรับผู้ใช้
+            alert('กำลังเปิดหน้าต่างพิมพ์ กรุณาเลือก "บันทึกเป็น PDF" หรือ "Save as PDF" ในการตั้งค่าการพิมพ์');
+            
+            // เรียกใช้งานฟังก์ชันพิมพ์ของเบราว์เซอร์
             window.print();
+            
+            // คืนค่าการแสดงผลเดิม
+            printArea.style.display = originalDisplay;
         }
         
         // ล้างข้อมูลทั้งหมด
